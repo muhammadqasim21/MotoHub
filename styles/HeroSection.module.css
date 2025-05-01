@@ -1,0 +1,28 @@
+.hero {
+    position: relative;
+    background-image: url('https://source.unsplash.com/1600x600/?motorcycle,road');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .overlay {
+    background-color: black;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .overlay h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .overlay p {
+    font-size: 1.2rem;
+  }
+  
