@@ -3,6 +3,7 @@ import styles from '@/styles/Auth.module.css';
 import { useAuth } from '@/context/AuthContext';  // ✅ Import the global context
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import axios from 'axios';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -10,15 +11,29 @@ export default function LoginPage() {
   const { login } = useAuth();  // ✅ Use the global login function
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const  handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const res = await axios.post('/api/login', {
+        email,
+        password,
+      });
 
-    // ✅ Dummy login logic (you can replace this with real API call)
-    if (email && password) {
-      // Call global login (set isLoggedIn true + set user info)
-      login({ name: 'Hassan', email });  // pass user data
-
-      router.push('/');  // Redirect to homepage
+      if (res.status === 200) {
+        // Show success message as inline text
+        login({name: res.data.name, email})
+        router.push('/');
+      } 
+    } catch (err) {
+      console.error(err);
+      if (err.response?.status === 400) {
+        alert('Email does not exist. Sign Up first')
+      }else if (err.response?.status===500) {
+        alert('Incorrect Password. Please try again.');
+      }
+       else {
+        alert('Something went wrong. Please try again.');
+      }
     }
   };
 
