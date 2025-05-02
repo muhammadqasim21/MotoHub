@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className={styles.menu}>
         {isLoggedIn ? (
           <>
-            <span className={styles.username}>Hi, {user?.name}</span>
+            <Link href="/profile"><span className={styles.username}>Hi, {user?.name}</span></Link>
             <Link href="/category" className={styles.linkBtn}>Category</Link>
             <Link href="/category" className={styles.linkBtn}>Products</Link>
             <Link href="/cart" className={styles.linkBtn}>Cart</Link>
