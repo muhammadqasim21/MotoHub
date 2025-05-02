@@ -42,7 +42,6 @@ const featuredProducts = [
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Navbar />
       <HeroSection />
       <section className={styles.section}>
         <h2>Browse Categories</h2>
@@ -61,8 +60,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
