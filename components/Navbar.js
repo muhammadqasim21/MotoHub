@@ -15,8 +15,10 @@ export default function Navbar() {
         {isLoggedIn ? (
           <>
             <span className={styles.username}>Hi, {user?.name}</span>
-            <button className={styles.linkBtn} onClick={logout}>Logout</button>
+            <Link href="/category" className={styles.linkBtn}>Category</Link>
+            <Link href="/category" className={styles.linkBtn}>Products</Link>
             <Link href="/cart" className={styles.linkBtn}>Cart</Link>
+            <button className={styles.linkBtn} onClick={logout}>Logout</button>
           </>
         ) : (
           <>
